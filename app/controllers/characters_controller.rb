@@ -1,7 +1,7 @@
 class CharactersController < ApplicationController
 
   def show
-    @house=Character.find(params[:house_id])
+    @house=House.find(params[:house_id])
     @character=Character.find(params[:id])
   end
 
@@ -18,29 +18,29 @@ class CharactersController < ApplicationController
     @character.save
     redirect_to @character.house
   end
-  #
-  # def edit
-  #     @character= Character.find(params[:id])
-  #     @house=House.find(params[:house_id])
-  #
-  # end
-  #
-  # def update
-  #   @house = House.find(params[:house_id])
-  #   @character= @house.characters.find(params[:id])
-  #   @character.update(character_params)
-  #   redirect_to @house
-  # end
-  #
-  # def destroy
-  #   @house = House.find(params[:house_id])
-  #   @character= @house.characters.find(params[:id])
-  #   @character.destroy
-  #
-  #  redirect_to houses_path
-  # end
-  #
-  #
+
+  def edit
+      @character= Character.find(params[:id])
+      @house=House.find(params[:house_id])
+
+  end
+
+  def update
+    @house = House.find(params[:house_id])
+    @character= @house.characters.find(params[:id])
+    @character.update(character_params)
+    redirect_to @house
+  end
+
+  def destroy
+    @house = House.find(params[:house_id])
+    @character= @house.characters.find(params[:id])
+    @character.destroy
+
+   redirect_to houses_path
+  end
+
+
   private
   def character_params
     params.require(:character).permit(:name, :portrayed_by,:img_url, :seasons,

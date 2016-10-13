@@ -1,21 +1,23 @@
-<h1> View Post <%=@post.title%> </h1>
-<%=@post.id %>
-<%=@post.article %>
-<%=@post.author_id %>
-<%=@post.comments_enabled %>
-<%=@post.date_published %>
-<%=@post.banner_url %>
-<%=@post.views %>
-<%=@post.enabled %>
 
-<form method="get" action= <%= posts_path %> >
-    <button type="submit">Return</button>
-</form>
-<ul>
-<% @post.comments.each do |comment| %>
- <li>
-  <%= comment.comment %>
-</li>
 
-<% end %>
-</ul>
+  <h1> View House <%= @house.name %></h1>
+
+  <h3> <%= link_to "BACK to All Houses", houses_path%> </h3>
+
+<h3> <%= link_to "Edit House: #{@house.name}", edit_house_path(@house)%> </h3>
+<h3> <%= link_to "Delete hous #{@house.name} and all Characters living here", house_path(@house), method: :destoy%> </h3>
+
+    <div>
+    <h3> Lord: <%= @house.lord  %> </h3>
+      <h4> Lord: <%= @house.description  %> </h4>
+      <img src="<%=@house.img_url%>" alt=<%= @house.name %> height="200" width=auto>
+  </div>
+
+<h3> <%= link_to "Add a new Character to House: #{@house.name}", new_house_character_path(@house)%> </h3>
+
+  <h2> Characters in this house </h2>
+  <% @house.characters.each do |character| %>
+      <h3> <%= link_to character.name, house_character_path(@house,character)%> </h3>
+     <p> <%= link_to "EDIT", edit_house_character_path(@house,character)%> </p>
+
+  <% end %>
