@@ -1,0 +1,12 @@
+<h1> View Character<%=@character.name%> </h1>
+
+<h2> Played By:<%=@character.portrayed_by%></h2>
+<h2> Seasons:<%=@character.seasons%></h2>
+<h2> First Seen:<%=@character.first_seen%></h2>
+<h2> Living Status:<%=@character.status%></h2>
+<img src="<%=@character.img_url%>" alt=<%= @character.name %> height="200" width=auto>
+
+
+<form method="get" action= <%= houses_path %> >
+    <button type="submit">Return</button>
+</form>

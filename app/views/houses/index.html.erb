@@ -1,0 +1,25 @@
+<h1> All Houses </h1>
+
+
+<ul>
+  <% @houses.each do |house| %>
+  <%= link_to "Add a New house ", house_path(house), method: :delete %>
+  <%= link_to "Delete This house ", house_path(house), method: :delete %>
+
+
+<div>
+  <h2> <%= house.name %></h1>
+    <h3> Lord: <%= house.lord  %> </h3>
+      <h4> Lord: <%= house.description  %> </h4>
+      <img src="<%=house.img_url%>" alt=<%= house.name %> height="200" width=auto>
+  </div>
+
+<h3> <%= link_to "Add a new Character to House: #{house.name}", new_house_character_path(house)%> </h3>
+
+  <h2> Characters in this house </h2>
+  <% house.characters.each do |character| %>
+      <h3> <%= link_to character.name, house_character_path(house,character)%> </h3>
+  <% end %>
+  <% end %>
+</div>
+</ul>

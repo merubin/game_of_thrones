@@ -1,0 +1,61 @@
+Rails Game of Thrones Notes
+
+1. Create Rails environment inside existing directory
+
+$ rails new . -d postgresql
+
+Create the Database
+rails db:create
+Created database 'scribble_development'
+Created database 'scribble_test'
+
+2. Create Post and Comment models
+They go in the app/models directories.
+syntax:
+
+class Post < ApplicationRecord
+  # AR classes are singular and capitalized by convention
+  has_many :comments, dependent: :destroy
+end
+class Comment < ApplicationRecord
+  belongs_to :post
+end
+
+
+
+
+
+rails g model house  name
+
+Model House name,	lord,	region,	description,	img_url
+Model Character name	house_id	portrayed_by	picture_url	seasons	first_seen	status
+rails g model character name portrayed_by	img_url	seasons	first_seen	status house:references
+rails g model house name lord region description img_url
+
+
+3. Migrations
+Create both the POSTS and COMMENTS migration files
+
+rails g migration create_characters name	portrayed_by	img_url	seasons	first_seen	status house:references
+rails g migration create_houses  name,	lord,	region,	description,	img_url
+
+
+Migrate with the following command
+rails db:migrate
+
+4 Seeds creation
+modify the db/seeds.rb file to drop data and create records
+run the rails command to insert the seed data
+
+rails db:seed
+
+Next go to routes.rb in the config directory
+
+resources :posts do
+  resources  :comments
+end
+
+create two controllers
+
+house_controllers.rb
+character_controllers.rb
