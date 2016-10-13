@@ -1,0 +1,8 @@
+rails db:drop
+rm db/migrate/*.rb
+rm models/*.rb
+rm test/models/*.rb
+rm test/fixtures/*.yml
+rails db:create
+rails g model house name lord region description img_url
+rails g model character name portrayed_by	img_url	seasons first_seen status house:references

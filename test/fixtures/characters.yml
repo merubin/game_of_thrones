@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  portrayed_by: MyString
+  img_url: MyString
+  seasons: MyString
+  first_seen: MyString
+  status: MyString
+  house: one
+
+two:
+  name: MyString
+  portrayed_by: MyString
+  img_url: MyString
+  seasons: MyString
+  first_seen: MyString
+  status: MyString
+  house: two
